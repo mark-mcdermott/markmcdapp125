@@ -7,15 +7,17 @@ class SessionsController < ApplicationController
   end
 
   def create
+    flash[:error] = []
     @user = User.find_by(username: params[:username])
-    if !!@user && @user.authenticate(params[:password])
+    if !@user
+      flash[:error] = 'Invalid email'
+    elsif !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to '/'
     else
-      format.html { render :new, status: :unprocessable_entity }
-      format.json { render json: 'failed login', status: :unprocessable_entity }
+      flash[:error] = 'Invalid password'
     end
-
+      redirect_to '/login', error: flash[:error]
   end
 
   def destroy

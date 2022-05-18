@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  add_flash_types :success, :error, :warning, :info
+
   before_action :authorized
   helper_method :current_user 
   helper_method :logged_in?
+  helper_method :bootstrap_class_for
 
   def authorized
     puts 'checking authorization status: ' + logged_in?.to_s
@@ -17,4 +20,19 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   
+  def bootstrap_class_for flash_type
+    case flash_type
+      when "success"
+        "alert-success"
+      when "error"
+        "alert-danger"
+      when "warning"
+        "alert-warning"
+      when "info"
+        "alert-info"
+      else
+        flash_type.to_s
+    end
+  end
+
 end

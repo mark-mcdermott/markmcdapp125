@@ -1,15 +1,6 @@
 <%= form_tag('/login', class: 'page-form') do %>
-  <% if @user.errors.any? %>
-    <div class="alert alert-danger">
-      <p><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</p>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: "layouts/shared/flash-messages", flash: flash %> 
 
   <div>
     <%= label_tag :username, :username, style: "display: block" %>
