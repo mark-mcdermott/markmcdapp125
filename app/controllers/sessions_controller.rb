@@ -7,17 +7,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    flash[:error] = []
+    destination = '/login';
     @user = User.find_by(username: params[:username])
     if !@user
-      flash[:error] = 'Invalid email'
+      flash[:error] = 'Invalid username'
     elsif !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to '/'
+      destination = '/'
     else
       flash[:error] = 'Invalid password'
     end
-      redirect_to '/login', error: flash[:error]
+      redirect_to destination, error: flash[:error]
   end
 
   def destroy

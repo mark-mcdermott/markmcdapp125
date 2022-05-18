@@ -13,4 +13,6 @@
   <%= button_to 'Log out', '/logout', method: :delete %>
 <% end %>
 
-<%= button_to 'Sign up', '/signup', method: :get %>
+<% if !logged_in? %>
+  <%= button_to 'Sign up', '/signup', method: :get %>
+<% end %>
