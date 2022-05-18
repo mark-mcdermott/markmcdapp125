@@ -1,7 +1,16 @@
-<button type='button'
-	class='btn btn-lg btn-danger'
-	data-bs-toggle='popover'
-	title='Popover title'
-	data-bs-content='Amazing content, right?'>
-	Click to toggle popover
-</button>
+<h1>Home</h1>
+
+
+<% if logged_in? %>
+  <p>Hi <%= current_user.username %>, you are logged in</p>
+<% else %>
+  <p>You are not logged in</>
+<% end %>
+
+<% if !logged_in? %>
+  <%= button_to 'Log in', '/login', method: :get %>
+<% else %>
+  <%= button_to 'Log out', '/logout', method: :delete %>
+<% end %>
+
+<%= button_to 'Sign up', '/signup', method: :get %>
