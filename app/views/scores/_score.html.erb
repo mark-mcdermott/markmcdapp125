@@ -1,0 +1,17 @@
+<div id="<%= dom_id score %>">
+  <p>
+    <strong>Value:</strong>
+    <%= score.value %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= User.find_by_id(score.user_id).username %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= score.date %>
+  </p>
+
+</div>

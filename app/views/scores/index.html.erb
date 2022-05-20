@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Leaderboard</h1>
+
+<div id="scores" class="col-md-6">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">score</th>
+        <th scope="col">user</th>
+        <th scope="col">date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @scores.each_with_index do |score, index| %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= score.value  %></td>
+          <td><%= User.find_by_id(score.user_id).username %></td>
+          <td><%= score.date.strftime('%-m/%-d/%y') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- <%= link_to "New score", new_score_path %> -->

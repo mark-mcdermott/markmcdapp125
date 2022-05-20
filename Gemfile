@@ -75,3 +75,7 @@ group :test do
 end
 
 gem "hotwire-livereload", "~> 1.1", :group => :development
+
+gem "ajax-datatables-rails", "~> 1.3"
+
+gem "jquery-datatables", "~> 1.10"
