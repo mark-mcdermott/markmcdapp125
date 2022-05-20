@@ -1,12 +1,17 @@
-namespace :seeds do
-  
-  desc "seed users"
-  task :users do
+namespace :seed do
 
-    # delete the old database & create a new one
+  desc "reset dev db"
+  task :reset_dev_db do 
     Rake::Task['db:reset'].invoke
+  end
 
-    # create users
+  desc "reset prod db"
+  task :reset_prod_db, [:db_name] do 
+    pg:reset #{args[:db_name]}
+  end
+
+  desc "seed users"
+  task :users => :environment do
     User.create([
       {username: "mark", password: "password"},
       {username: "tim", password: "password"},
@@ -15,7 +20,18 @@ namespace :seeds do
       {username: "horton", password: "password"},
       {username: "keanu", password: "password"}
     ])
+  end
 
+  desc "seed dev"
+  task :dev do
+    Rake::Task['seed:reset_dev_db'].invoke
+    Rake::Task['seed:users'].invoke
+  end
+
+  desc "seed prod"
+  task :prod do
+    Rake::Task['seed:reset_prod_db'].invoke('markmcdapp125')
+    Rake::Task['seed:users'].invoke
   end
 
 end
