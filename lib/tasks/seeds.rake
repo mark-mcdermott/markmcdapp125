@@ -30,7 +30,7 @@ namespace :seed do
 
   desc "seed prod"
   task :prod do
-    Rake::Task['seed:reset_prod_db'].invoke('markmcdapp125')
+    Rake::Task['seed:reset_prod_db'].invoke
     Rake::Task['seed:users'].invoke
   end
 
