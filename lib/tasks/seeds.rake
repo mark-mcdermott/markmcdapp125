@@ -7,7 +7,7 @@ namespace :seed do
 
   desc "reset prod db"
   task :reset_prod_db do 
-    pg:reset DATABASE --confirm markmcdapp125
+    User.all.destroy
   end
 
   desc "seed users"
