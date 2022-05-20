@@ -6,12 +6,8 @@ namespace :seed do
   end
 
   desc "reset prod db"
-  task :reset_prod_db => :environment do
-    ActiveRecord::Base.connection.tables.each do |table|
-      if table != 'schema_migrations'
-        table.singularize.camelize.constantize.destroy_all
-      end
-    end
+  task :reset_prod_db, [:db_name] do 
+    `heroku pg:reset DATABASE`
   end
 
   desc "seed users"
