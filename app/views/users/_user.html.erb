@@ -1,12 +1,5 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
-
-  <p>
-    <strong>Password digest:</strong>
-    <%= user.password_digest %>
-  </p>
-
+<div class="card mt-4" id="<%= dom_id user %>" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-text"><%= user.username %></h5>
+  </div>
 </div>

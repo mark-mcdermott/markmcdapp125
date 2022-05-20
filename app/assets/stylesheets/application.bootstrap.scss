@@ -34,7 +34,6 @@ $secondary: rgb(57, 195, 226);
   appearance: none; // Fix appearance for date inputs in Safari
 
   @include border-radius($input-border-radius, 0);
-
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
 
