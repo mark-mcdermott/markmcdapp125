@@ -7,7 +7,7 @@ namespace :seed do
 
   desc "reset prod db"
   task :reset_prod_db, [:db_name] do 
-    pg:reset #{args[:db_name]}
+    heroku pg:reset DATABASE
   end
 
   desc "seed users"
