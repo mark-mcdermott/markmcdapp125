@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :scores
   resources :users
 
-  root 'home#index'
+  root 'game#index'
 
   get    '/login',        to: 'sessions#new'
   post   '/login',        to: 'sessions#create'

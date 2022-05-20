@@ -131,6 +131,16 @@ h1 {
 	font-weight: bold;
 }
 
+.game {
+
+  text-align: center;
+
+  canvas {
+    border: 1px solid #000;
+    margin: 50px 0 0;
+  }
+}
+
 form {
   &.page-form {
     @include media-breakpoint-up(md) {  

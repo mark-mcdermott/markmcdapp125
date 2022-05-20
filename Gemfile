@@ -74,6 +74,10 @@ group :test do
   gem "webdrivers"
 end
 
+gem "sprockets", "~> 4.x"
+
+gem "babel-schmooze-sprockets"
+
 gem "hotwire-livereload", "~> 1.1", :group => :development
 
 gem "ajax-datatables-rails", "~> 1.3"
