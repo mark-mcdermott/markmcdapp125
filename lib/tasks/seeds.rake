@@ -7,7 +7,7 @@ namespace :seed do
 
   desc "reset prod db"
   task :reset_prod_db => :environment do
-    User.all.destroy
+    User.agents.find_each(&:destroy)
   end
 
   desc "seed users"
